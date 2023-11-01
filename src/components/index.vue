@@ -12,13 +12,15 @@
     </div>
     <!-- right -->
     <div class="flex-[80%]">
-      <p>{{ selectedFields }} fields value</p>
+      <FormKit type="form" form-class="outer-container" submitlabel="Login">
+        <FormKitSchema :schema="selectedFields" />
+      </FormKit>
     </div>
   </div>
 </template>
 <script setup>
-import SelectField from "./SelectField.vue"
-import FormField from "./FormField.vue"
+import SelectField from "./SelectField.vue";
+import FormField from "./FormField.vue";
 import { ref } from "vue";
 const fields = ref([
   {
@@ -48,6 +50,27 @@ const fields = ref([
       },
     },
   },
+  {
+    type: "file",
+    detail: {
+      label: {
+        type: "text",
+        label: "Label",
+        placeHolder: " label value",
+      },
+      help: {
+        type: "text",
+        label: "Helper",
+        help: "Helper value",
+        placeHolder: " helper value",
+      },
+      multiple: {
+        type: "checkbox",
+        label: "Multiple",
+      },
+    },
+  },
+
   {
     type: "button",
     detail: {

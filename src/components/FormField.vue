@@ -7,19 +7,29 @@
         class="py-3 px-4 border rounded-md"
         type="text"
         :placeholder="value.placeHolder"
+        :id="key"
       />
       <input
         v-if="value.type == 'Number'"
         class="py-3 px-4 border rounded-md"
         type="number"
         :placeholder="value.placeHolder"
+        :id="key"
+      />
+      <input
+        v-if="value.type == 'checkbox'"
+        class="mx-3 border-primary rounded-md"
+        type="checkbox"
+        :id="key"
       />
     </div>
-    <button class="py-3 bg-primary rounded-md">Add</button>
+    <button class="py-3 bg-red-500 text-white rounded-md">Add</button>
   </form>
 </template>
 
 <script setup>
+import { ref, defineEmits, defineProps } from "vue";
+
 const props = defineProps({
   field: {
     type: Object,
@@ -30,7 +40,21 @@ const props = defineProps({
 const emit = defineEmits(["addToArray"]);
 
 const handleAdd = () => {
+  let finalJson = {
+    $formkit: props.field.type,
+  };
+
+  for (let key in props.field.detail) {
+    const element = document.getElementById(key);
+
+    if (element && element.value != "") {
+      finalJson[key] = element.value;
+    }
+  }
+
+  console.log(finalJson);
+
   console.log("handle add to array");
-  emit("addToArray", props.field);
+  emit("addToArray", finalJson);
 };
 </script>

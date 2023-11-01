@@ -21,8 +21,8 @@
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
-const files = ["text", "button", "checkbox", "color", "date", "email"];
+import { ref, defineEmits } from "vue";
+const files = ["text", "button", "checkbox", "color", "date", "email", "file"];
 const emit = defineEmits(["fieldSelected"]);
 
 const isOpen = ref(false);
