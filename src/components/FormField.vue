@@ -288,6 +288,12 @@ const handleSubmit = () => {
   } else {
     emit("editField", finalJson);
   }
+
+  for (let key in finalJson) {
+    if (fieldWithValue.value.detail[key]) {
+      fieldWithValue.value.detail[key].value = "";
+    }
+  }
 };
 
 /*-----------------------Options------------------*/
