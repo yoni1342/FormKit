@@ -81,123 +81,124 @@
   >
     Close
   </button>
-
-  <div
-    v-if="showModal"
-    class="absolute flex flex-col justify-center items-center top-0 left-0 w-full h-full bg-black/80 z-10"
-  >
-    <div class="relative bg-white w-[50%] h-[80%] py-10 space-y-10 p-4">
-      <div
-        class="absolute top-0 right-0 text-3xl p-2 text-red-500 cursor-pointer px-2"
-        @click="
-          showModal = false;
-          rule = {};
-        "
-      >
-        X
-      </div>
-      <!-- {{ Rule }} -->
-      <div class="flex flex-wrap">
-        <div class="checkStyle">
-          <label>Required</label>
-          <input
-            v-model="rule.required"
-            class="py-3 px-4 border rounded-md col-span-2"
-            type="checkbox"
-          />
-        </div>
-
-        <div class="checkStyle">
-          <label>Url</label>
-          <input
-            v-model="rule.url"
-            class="py-3 px-4 border rounded-md col-span-2"
-            type="checkbox"
-          />
-        </div>
-
-        <div class="checkStyle">
-          <label>number</label>
-          <input
-            v-model="rule.number"
-            class="py-3 px-4 border rounded-md col-span-2"
-            type="checkbox"
-          />
-        </div>
-
-        <div class="checkStyle">
-          <label>accepted</label>
-          <input
-            v-model="rule.accepted"
-            class="py-3 px-4 border rounded-md col-span-2"
-            type="checkbox"
-          />
-        </div>
-        <div class="checkStyle">
-          <label>emial</label>
-          <input
-            v-model="rule.email"
-            class="py-3 px-4 border rounded-md col-span-2"
-            type="checkbox"
-          />
-        </div>
-        <div class="checkStyle">
-          <label>alpha</label>
-          <input
-            v-model="rule.alpha"
-            class="py-3 px-4 border rounded-md col-span-2"
-            type="checkbox"
-          />
-        </div>
-        <div class="checkStyle">
-          <label>alphanumeric</label>
-          <input
-            v-model="rule.alphanumeric"
-            class="py-3 px-4 border rounded-md col-span-2"
-            type="checkbox"
-          />
-        </div>
-        <div class="checkStyle">
-          <label>alpha spaces</label>
-          <input
-            v-model="rule.alpha_spaces"
-            class="py-3 px-4 border rounded-md col-span-2"
-            type="checkbox"
-          />
-        </div>
-        <button
-          class="absolute bottom-4 bg-red-500 px-2 py-1 rounded-md text-white left-[40%]"
-          @click="submitRules"
+  <teleport to="body">
+    <div
+      v-if="showModal"
+      class="absolute flex flex-col justify-center items-center top-0 left-0 w-full h-full bg-black/80 z-10"
+    >
+      <div class="relative bg-white w-[50%] h-[80%] py-10 space-y-10 p-4">
+        <div
+          class="absolute top-0 right-0 text-3xl p-2 text-red-500 cursor-pointer px-2"
+          @click="
+            showModal = false;
+            rule = {};
+          "
         >
-          submit
-        </button>
-      </div>
+          X
+        </div>
+        <!-- {{ Rule }} -->
+        <div class="flex flex-wrap">
+          <div class="checkStyle">
+            <label>Required</label>
+            <input
+              v-model="rule.required"
+              class="py-3 px-4 border rounded-md col-span-2"
+              type="checkbox"
+            />
+          </div>
 
-      <div class="grid grid-cols-2 gap-4">
-        <div class="textStyle">
-          <label>length</label>
-          <input v-model="rule.length" class="inputClass" type="number" />
-        </div>
-        <div class="textStyle">
-          <label>min</label>
-          <input v-model="rule.min" class="inputClass" type="number" />
-        </div>
-        <div class="textStyle">
-          <label>max</label>
-          <input v-model="rule.max" class="inputClass" type="number" />
-        </div>
-        <div class="textStyle">
-          <label>start with</label>
-          <input v-model="rule.starts_with" class="inputClass" type="text" />
+          <div class="checkStyle">
+            <label>Url</label>
+            <input
+              v-model="rule.url"
+              class="py-3 px-4 border rounded-md col-span-2"
+              type="checkbox"
+            />
+          </div>
+
+          <div class="checkStyle">
+            <label>number</label>
+            <input
+              v-model="rule.number"
+              class="py-3 px-4 border rounded-md col-span-2"
+              type="checkbox"
+            />
+          </div>
+
+          <div class="checkStyle">
+            <label>accepted</label>
+            <input
+              v-model="rule.accepted"
+              class="py-3 px-4 border rounded-md col-span-2"
+              type="checkbox"
+            />
+          </div>
+          <div class="checkStyle">
+            <label>emial</label>
+            <input
+              v-model="rule.email"
+              class="py-3 px-4 border rounded-md col-span-2"
+              type="checkbox"
+            />
+          </div>
+          <div class="checkStyle">
+            <label>alpha</label>
+            <input
+              v-model="rule.alpha"
+              class="py-3 px-4 border rounded-md col-span-2"
+              type="checkbox"
+            />
+          </div>
+          <div class="checkStyle">
+            <label>alphanumeric</label>
+            <input
+              v-model="rule.alphanumeric"
+              class="py-3 px-4 border rounded-md col-span-2"
+              type="checkbox"
+            />
+          </div>
+          <div class="checkStyle">
+            <label>alpha spaces</label>
+            <input
+              v-model="rule.alpha_spaces"
+              class="py-3 px-4 border rounded-md col-span-2"
+              type="checkbox"
+            />
+          </div>
+          <button
+            class="absolute bottom-4 bg-red-500 px-2 py-1 rounded-md text-white left-[40%]"
+            @click="submitRules"
+          >
+            submit
+          </button>
         </div>
 
-        <div class="textStyle">
-          <label>End with</label>
-          <input v-model="rule.ends_with" class="inputClass" type="text" />
+        <div class="grid grid-cols-2 gap-4">
+          <div class="textStyle">
+            <label>length</label>
+            <input v-model="rule.length" class="inputClass" type="number" />
+          </div>
+          <div class="textStyle">
+            <label>min</label>
+            <input v-model="rule.min" class="inputClass" type="number" />
+          </div>
+          <div class="textStyle">
+            <label>max</label>
+            <input v-model="rule.max" class="inputClass" type="number" />
+          </div>
+          <div class="textStyle">
+            <label>start with</label>
+            <input v-model="rule.starts_with" class="inputClass" type="text" />
+          </div>
+
+          <div class="textStyle">
+            <label>End with</label>
+            <input v-model="rule.ends_with" class="inputClass" type="text" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </teleport>
 </template>
 
 <script setup>
