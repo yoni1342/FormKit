@@ -97,7 +97,7 @@
           X
         </div>
         <!-- {{ Rule }} -->
-        <div class="flex flex-wrap">
+        <div class="grid grid-cols-4">
           <div class="checkStyle">
             <label>Required</label>
             <input
@@ -166,14 +166,14 @@
             />
           </div>
           <button
-            class="absolute bottom-4 bg-red-500 px-2 py-1 rounded-md text-white left-[40%]"
+            class="absolute bottom-4 bg-red-500 px-4 py-2 hover:shadow-lg active:scale-95 transition-transform duration-150 ease-in-out rounded-md text-white left-[40%]"
             @click="submitRules"
           >
             submit
           </button>
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-3 gap-4">
           <div class="textStyle">
             <label>length</label>
             <input v-model="rule.length" class="inputClass" type="number" />
@@ -283,10 +283,8 @@ const handleSubmit = () => {
   }
 
   if (props.field.type == "checkbox") {
-    finalJson["value"] = fieldWithValue.value?.value
+    finalJson["value"] = fieldWithValue.value?.value;
   }
-
-
 
   finalJson.validation = validations.value;
 
@@ -322,7 +320,7 @@ const removeOption = (option) => {
   @apply space-x-2 flex justify-between pr-10 pt-4 capitalize;
 }
 .textStyle {
-  @apply flex items-center space-x-2 capitalize;
+  @apply flex flex-col items-start gap-2 capitalize;
 }
 .inputClass {
   @apply py-3 px-4 border rounded-md col-span-2;
