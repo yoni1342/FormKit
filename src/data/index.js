@@ -224,6 +224,16 @@ export default ref([
       },
     },
   },
+  {
+    type: "checkbox",
+    validation: "",
+
+    detail: {
+      ...basicField3,
+    },
+    value: false
+
+  },
 
   {
     type: "select",

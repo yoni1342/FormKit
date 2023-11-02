@@ -281,6 +281,13 @@ const handleSubmit = () => {
   if (props.field.type == "radio" || props.field.type == "select") {
     finalJson["options"] = options.value;
   }
+
+  if (props.field.type == "checkbox") {
+    finalJson["value"] = fieldWithValue.value?.value
+  }
+
+
+
   finalJson.validation = validations.value;
 
   if (props.isAdd) {
