@@ -64,7 +64,7 @@
     </div>
 
     <button
-      type="submit"
+      type="button"
       class="py-3 my-5 text-white font-medium text-xl rounded-md text-center"
       @click="handleSubmitValidation"
     >
