@@ -101,7 +101,6 @@ const Selected = (name) => {
 
 const addToArray = (field) => {
   selectedFields.value.push(field);
-  showForm.value = false;
 };
 
 /*-------------Delete Field--------------*/
